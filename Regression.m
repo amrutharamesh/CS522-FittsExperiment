@@ -1,6 +1,6 @@
 clear all; close all; warning off; clc;
 
-%%
+
 load clk_ammu.mat;
 ID = data(:, 4);
 ID = floor(ID*1000)/1000;
@@ -17,14 +17,13 @@ for i=1:length(UID)
     UTP = [UMT; mean(TP(inds))];
 end
 
-%%
+
 randInds = randperm(length(ID));
 ID = ID(randInds);
 MT = MT(randInds);
 coeffs = polyfit(ID, MT, 1);
 save ('coeffs.mat', 'coeffs');
 
-%%
 figure;
 plot(ID, MT, 'b.', 'LineWidth', 5); grid on;
 title('Movement Time over Index of Difficulty'); xlabel('ID (bits)'); ylabel('MT (ms)');
